@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="dataset">
+      <UniqueIdentifier>{27fc4841-954b-470d-b1e2-e335f81bd921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataset\node">
+      <UniqueIdentifier>{dc8b1c2f-e63a-4a22-af45-f06f332537d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataset\pin">
+      <UniqueIdentifier>{7f801321-e56e-4f8b-a7ba-1236d2ebb686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{897a7022-bec3-41ba-8826-1a9319b49821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\trans">
+      <UniqueIdentifier>{9e208da1-9fa6-4734-b6da-55c4b972f102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view">
+      <UniqueIdentifier>{5e9eb7dd-0afe-4dad-b357-df0180b6f6a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view\graph">
+      <UniqueIdentifier>{2f22faeb-6d28-440a-86f5-d285988e8854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view\preview">
+      <UniqueIdentifier>{5b14b29e-719f-4824-8b9f-6d9042441d51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\rtti">
+      <UniqueIdentifier>{7b0b5871-26cb-4c25-ad2f-86481ebc28f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\eval">
+      <UniqueIdentifier>{06422b88-c013-44ae-ad59-0416c3cd8cf9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\gilab\Node.h">
+      <Filter>dataset\node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\RenderAdapter.h">
+      <Filter>tools\trans</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\PinType.h">
+      <Filter>dataset\pin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\PinCallback.h">
+      <Filter>dataset\pin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\WxGraphPage.h">
+      <Filter>view\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\WxGraphCanvas.h">
+      <Filter>view\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\MessageID.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\PreviewPage.h">
+      <Filter>view\preview</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\WxPreviewCanvas.h">
+      <Filter>view\preview</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\GILab.h" />
+    <ClInclude Include="..\..\..\include\gilab\node_def_gen.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\node_regist_cfg.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\node_rttr_gen.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\RegistNodes.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\Evaluator.h">
+      <Filter>tools\eval</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\Node.cpp">
+      <Filter>dataset\node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\RenderAdapter.cpp">
+      <Filter>tools\trans</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PinCallback.cpp">
+      <Filter>dataset\pin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\WxGraphPage.cpp">
+      <Filter>view\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\WxGraphCanvas.cpp">
+      <Filter>view\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PreviewPage.cpp">
+      <Filter>view\preview</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\WxPreviewCanvas.cpp">
+      <Filter>view\preview</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\GILab.cpp" />
+    <ClCompile Include="..\..\..\source\RegistNodes.cpp">
+      <Filter>tools\rtti</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Evaluator.cpp">
+      <Filter>tools\eval</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
