@@ -1,6 +1,7 @@
 #include "gilab/WxGraphCanvas.h"
 #include "gilab/WxGraphPage.h"
 #include "gilab/Node.h"
+#include "gilab/NodePreview.h"
 
 #include <ee0/WxStagePage.h>
 #include <ee0/SubjectMgr.h>
@@ -25,11 +26,6 @@ WxGraphCanvas::WxGraphCanvas(const ur::Device& dev, WxGraphPage* stage,
 void WxGraphCanvas::DrawForeground() const
 {
     ee2::WxStageCanvas::DrawForeground();
-
-    auto eval = m_stage->GetSceneTree()->GetCurrEval();
-    if (!eval) {
-        return;
-    }
     
     auto screen_region = CalcScreenRegion();
 	m_stage->Traverse([&](const ee0::GameObj& obj)->bool
@@ -48,23 +44,16 @@ void WxGraphCanvas::DrawForeground() const
             return true;
         }
 
-        //if (!std::static_pointer_cast<Node>(front_node)->GetPreview()) {
-        //    return true;
-        //}
-
-        auto back_node = eval->QueryBackNode(*front_node);
-        assert(back_node);
-
         n2::RenderParams rp;
         if (obj->HasUniqueComp<n2::CompTransform>())
         {
             auto& ctrans = obj->GetUniqueComp<n2::CompTransform>();
             rp.SetMatrix(ctrans.GetTrans().GetMatrix());
         }
-
-        //auto rg_node = std::static_pointer_cast<gigraph::Node>(back_node);
-        //NodePreview::Draw(m_dev, *GetRenderContext().ur_ctx, m_stage->GetScriptEnv(),
-        //    *front_node, *rg_node, rp, m_stage->GetFrontEval());
+        auto eval = m_stage->GetSceneTree()->GetCurrEval();
+        if (eval) {
+            NodePreview::Draw(m_dev, *GetRenderContext().ur_ctx, *front_node, rp, *eval);
+        }
 
 		return true;
 	});

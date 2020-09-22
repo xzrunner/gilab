@@ -15,6 +15,8 @@
     <ClInclude Include="..\..\..\include\gilab\GILab.h" />
     <ClInclude Include="..\..\..\include\gilab\MessageID.h" />
     <ClInclude Include="..\..\..\include\gilab\Node.h" />
+    <ClInclude Include="..\..\..\include\gilab\NodePreview.h" />
+    <ClInclude Include="..\..\..\include\gilab\node\Preview.h" />
     <ClInclude Include="..\..\..\include\gilab\node_def_gen.h" />
     <ClInclude Include="..\..\..\include\gilab\node_regist_cfg.h" />
     <ClInclude Include="..\..\..\include\gilab\node_rttr_gen.h" />
@@ -31,6 +33,7 @@
     <ClCompile Include="..\..\..\source\Evaluator.cpp" />
     <ClCompile Include="..\..\..\source\GILab.cpp" />
     <ClCompile Include="..\..\..\source\Node.cpp" />
+    <ClCompile Include="..\..\..\source\NodePreview.cpp" />
     <ClCompile Include="..\..\..\source\PinCallback.cpp" />
     <ClCompile Include="..\..\..\source\PreviewPage.cpp" />
     <ClCompile Include="..\..\..\source\RegistNodes.cpp" />

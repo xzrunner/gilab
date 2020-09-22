@@ -12,13 +12,16 @@
 namespace gilab
 {
 
+class RenderContext;
+
 class Evaluator : boost::noncopyable
 {
 public:
     Evaluator();
 
     void Rebuild(const std::vector<bp::NodePtr>& nodes,
-        const bp::BackendGraph<gigraph::ParamType>& eval);
+        const bp::BackendGraph<gigraph::ParamType>& eval,
+        const std::shared_ptr<dag::Context>& ctx);
 
 }; // Evaluator
 

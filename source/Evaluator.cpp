@@ -12,7 +12,8 @@ Evaluator::Evaluator()
 }
 
 void Evaluator::Rebuild(const std::vector<bp::NodePtr>& nodes, 
-	                    const bp::BackendGraph<gigraph::ParamType>& eval)
+	                    const bp::BackendGraph<gigraph::ParamType>& eval,
+                        const std::shared_ptr<dag::Context>& ctx)
 {
 	std::vector<gigraph::CompPtr> comps;
     for (auto& node : nodes)
@@ -27,7 +28,7 @@ void Evaluator::Rebuild(const std::vector<bp::NodePtr>& nodes,
     }
 
     gigraph::Evaluator back_eval;
-    back_eval.Rebuild(comps);
+    back_eval.Rebuild(comps, ctx);
 }
 
 }

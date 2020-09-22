@@ -5,6 +5,8 @@
 
 #include <ee0/WxStageCanvas.h>
 
+#include <gigraph/RenderContext.h>
+
 #include <boost/filesystem.hpp>
 
 namespace gilab
@@ -23,6 +25,14 @@ WxGraphPage::WxGraphPage(const ur::Device& dev, wxWindow* parent, const ee0::Gam
 void WxGraphPage::SetCanvas(const std::shared_ptr<ee0::WxStageCanvas>& canvas)
 {
     GetImpl().SetCanvas(canvas);
+
+    auto ctx = std::make_shared<gigraph::RenderContext>();
+    m_ctx = ctx;
+
+    ctx->ur_dev = &canvas->GetRenderDevice();
+    ctx->ur_ctx = canvas->GetRenderContext().ur_ctx.get();
+
+    GetSceneTree()->GetCurrEval()->SetContext(ctx);
 }
 
 void WxGraphPage::OnEvalChangeed()
@@ -45,7 +55,7 @@ void WxGraphPage::OnEvalChangeed()
     }
 
     Evaluator eval;
-    eval.Rebuild(nodes, *GetSceneTree()->GetRootGraph());
+    eval.Rebuild(nodes, *GetSceneTree()->GetRootGraph(), m_ctx);
 }
 
 }

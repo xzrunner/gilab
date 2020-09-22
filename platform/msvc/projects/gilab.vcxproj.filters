@@ -31,6 +31,12 @@
     <Filter Include="tools\eval">
       <UniqueIdentifier>{06422b88-c013-44ae-ad59-0416c3cd8cf9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="nodes">
+      <UniqueIdentifier>{08d9f899-3349-43ac-be8d-e71cfc47a677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nodes\tools">
+      <UniqueIdentifier>{25b6e656-badb-4fc8-9248-568b6343a7ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\gilab\Node.h">
@@ -76,6 +82,12 @@
     <ClInclude Include="..\..\..\include\gilab\Evaluator.h">
       <Filter>tools\eval</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\node\Preview.h">
+      <Filter>nodes\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gilab\NodePreview.h">
+      <Filter>dataset\node</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\Node.cpp">
@@ -105,6 +117,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\Evaluator.cpp">
       <Filter>tools\eval</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodePreview.cpp">
+      <Filter>dataset\node</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
