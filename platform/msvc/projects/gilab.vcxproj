@@ -23,6 +23,7 @@
     <ClInclude Include="..\..\..\include\gilab\PinCallback.h" />
     <ClInclude Include="..\..\..\include\gilab\PinType.h" />
     <ClInclude Include="..\..\..\include\gilab\PreviewPage.h" />
+    <ClInclude Include="..\..\..\include\gilab\ReflectPropTypes.h" />
     <ClInclude Include="..\..\..\include\gilab\RegistNodes.h" />
     <ClInclude Include="..\..\..\include\gilab\RenderAdapter.h" />
     <ClInclude Include="..\..\..\include\gilab\WxGraphCanvas.h" />
@@ -36,6 +37,7 @@
     <ClCompile Include="..\..\..\source\NodePreview.cpp" />
     <ClCompile Include="..\..\..\source\PinCallback.cpp" />
     <ClCompile Include="..\..\..\source\PreviewPage.cpp" />
+    <ClCompile Include="..\..\..\source\ReflectPropTypes.cpp" />
     <ClCompile Include="..\..\..\source\RegistNodes.cpp" />
     <ClCompile Include="..\..\..\source\RenderAdapter.cpp" />
     <ClCompile Include="..\..\..\source\WxGraphCanvas.cpp" />

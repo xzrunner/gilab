@@ -16,6 +16,7 @@
 #include <unirender/ShaderProgram.h>
 #include <unirender/Factory.h>
 #include <unirender/ClearState.h>
+#include <unirender/TextureSampler.h>
 #include <painting0/ModelMatUpdater.h>
 #include <painting2/Blackboard.h>
 #include <painting2/RenderContext.h>
@@ -68,10 +69,13 @@ void NodePreview::Draw(const ur::Device& dev, ur::Context& ctx, const bp::Node& 
     }
 
     pt2::RenderTargetMgr::Instance()->Return(fbo);
+
+    auto default_sampler = dev.GetTextureSampler(ur::Device::TextureSamplerType::LinearClamp);
+    default_sampler->Bind(0);
 }
 
-bool NodePreview::DrawToRT(const ur::Device& dev, ur::Context& ctx, 
-                           const bp::Node& node, const bp::BackendGraph<gigraph::ParamType>& eval)
+bool NodePreview::DrawToRT(const ur::Device& dev, ur::Context& ctx, const bp::Node& node, 
+                           const bp::BackendGraph<gigraph::ParamType>& eval)
 {
     auto renderer = rp::RenderMgr::Instance()->GetRenderer(rp::RenderType::SPRITE);
     auto shader = renderer->GetAllShaders()[0];
@@ -122,9 +126,19 @@ bool NodePreview::DrawToRT(const ur::Device& dev, ur::Context& ctx,
                     auto tex = std::static_pointer_cast<gigraph::TextureParam>(param)->GetTexture();
                     if (tex)
                     {
+                        auto& preview_node = static_cast<const node::Preview&>(node);
+
+                        auto sampler = dev.GetTextureSampler(preview_node.GetSamplerType());
+                        sampler->Bind(0);
+
                         sm::Matrix2D mat;
                         mat.Scale(static_cast<float>(TEX_SIZE), static_cast<float>(TEX_SIZE));
                         auto rs = ur::DefaultRenderState2D();
+                        auto& color_mask = preview_node.GetColorMask();
+                        rs.color_mask.r = color_mask.x;
+                        rs.color_mask.g = color_mask.y;
+                        rs.color_mask.b = color_mask.z;
+                        rs.color_mask.a = color_mask.w;
                         pt2::RenderSystem::DrawTexture(dev, ctx, rs, tex->GetWidth(), tex->GetHeight(), tex, sm::rect(1, 1), mat);
                     }
                 }

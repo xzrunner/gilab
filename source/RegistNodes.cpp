@@ -32,8 +32,16 @@ rttr::registration::class_<gilab::Node>("gilab::node")
 #undef SKIP_FILE_NODE
 #undef EXE_FILEPATH
 
-// renderlab
-REGIST_NODE_RTTI_DEFAULT(Preview, preview)
+REGIST_NODE_RTTI(Preview, preview,                                                                      \
+.property("color_mask", &gilab::node::Preview::GetColorMask, &gilab::node::Preview::SetColorMask)       \
+(                                                                                                       \
+	rttr::metadata(ee0::UIMetaInfoTag(), ee0::UIMetaInfo("ColorMask"))                                  \
+)                                                                                                       \
+.property("sampler_type", &gilab::node::Preview::GetSamplerType, &gilab::node::Preview::SetSamplerType) \
+(                                                                                                       \
+	rttr::metadata(ee0::UIMetaInfoTag(), ee0::UIMetaInfo("SamplerType"))                                \
+)                                                                                                       \
+)
 
 }
 

@@ -2,6 +2,7 @@
 #include "gilab/PinCallback.h"
 #include "gilab/Node.h"
 #include "gilab/RegistNodes.h"
+#include "gilab/ReflectPropTypes.h"
 
 #include <blueprint/node/Commentary.h>
 
@@ -35,7 +36,7 @@ void GILab::RegistRTTR()
     bp::regist_sm_rttr();
     bp::regist_pt0_rttr();
 
-//    prop_types_regist_rttr();
+    prop_types_regist_rttr();
     nodes_regist_rttr();
 }
 
