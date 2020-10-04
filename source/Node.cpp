@@ -35,4 +35,27 @@ void Node::InitPins(const std::string& name)
     trans.InitNodePins(*this, name);
 }
 
+void Node::InitProps(const std::string& name)
+{
+    rttr::type t = rttr::type::get_by_name("gigraph::" + name);
+    if (!t.is_valid()) {
+        return;
+    }
+
+    rttr::variant var = t.create();
+    assert(var.is_valid());
+    auto back_node = var.get_value<std::shared_ptr<gigraph::ParamType>>();
+    auto back_props = t.get_properties();
+    auto front_props = get_type().get_properties();
+    for (auto& back_prop : back_props)
+    {
+        for (auto& front_prop : front_props) {
+            if (back_prop.get_name() == front_prop.get_name()) {
+                front_prop.set_value(*this, back_prop.get_value(var));
+                break;
+            }
+        }
+    }
+}
+
 }

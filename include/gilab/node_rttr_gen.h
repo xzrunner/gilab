@@ -18,11 +18,21 @@
 rttr::registration::class_<gilab::node::PARM_NODE_CLASS>(XSTR(RTTR_NAME))
 .constructor<>()
 
+#ifdef PARM_CODE_EDIT
+#define PARAM_INFO(id, type, name, member, default_val)         \
+.property(#name, &gilab::node::##PARM_NODE_CLASS::member)       \
+(                                                               \
+	rttr::metadata(ee0::UIMetaInfoTag(), ee0::UIMetaInfo(#id)), \
+	rttr::metadata(ee0::PropLongStringTag(), true)              \
+)
+#else
 #define PARAM_INFO(id, type, name, member, default_val)        \
 .property(#name, &gilab::node::##PARM_NODE_CLASS::member)      \
 (                                                              \
 	rttr::metadata(ee0::UIMetaInfoTag(), ee0::UIMetaInfo(#id)) \
 )
+#endif // PARM_CODE_EDIT
+
 #ifndef NO_PARM_FILEPATH
 #include XSTR(PARM_FILEPATH)
 #endif // NO_PARM_FILEPATH
@@ -34,3 +44,5 @@ rttr::registration::class_<gilab::node::PARM_NODE_CLASS>(XSTR(RTTR_NAME))
 #undef PARM_NODE_CLASS
 
 #undef NO_PARM_FILEPATH
+
+#undef PARM_CODE_EDIT

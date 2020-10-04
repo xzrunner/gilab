@@ -44,4 +44,27 @@
 #define PARM_NODE_NAME scene
 #include EXE_FILEPATH
 
+#define PARM_NODE_CLASS Shader
+#define PARM_NODE_NAME shader
+#define PARM_CODE_EDIT
+#include EXE_FILEPATH
+
+#undef NODES_GROUP_NAME
+
+// pathtrace
+
+#define NODES_GROUP_NAME PathTrace
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_CLASS BRDF
+#define PARM_NODE_NAME brdf
+#define PARM_NODE_BASE Shader
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_CLASS Glass
+#define PARM_NODE_NAME glass
+#define PARM_NODE_BASE Shader
+#include EXE_FILEPATH
+
 #undef NODES_GROUP_NAME

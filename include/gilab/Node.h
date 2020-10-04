@@ -13,6 +13,7 @@ public:
 
 protected:
     void InitPins(const std::string& name);
+    void InitProps(const std::string& name);
 
     RTTR_ENABLE(bp::Node)
 

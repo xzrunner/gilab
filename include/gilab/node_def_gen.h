@@ -13,13 +13,18 @@
 #define PARM_FILEPATH gigraph/component/##PARM_NODE_CLASS##.parm.h
 #endif
 
-class PARM_NODE_CLASS : public Node
+#ifndef PARM_NODE_BASE
+#define PARM_NODE_BASE Node
+#endif // PARM_NODE_BASE
+
+class PARM_NODE_CLASS : public PARM_NODE_BASE
 {
 public:
-	PARM_NODE_CLASS()
-        : Node(XSTR(PARM_NODE_CLASS))
+	PARM_NODE_CLASS(const std::string& title = XSTR(PARM_NODE_CLASS))
+        : PARM_NODE_BASE(title)
 	{
         InitPins(XSTR(PARM_NODE_NAME));
+        InitProps(XSTR(PARM_NODE_NAME));
 #ifdef ENABLE_PREVIEW
         SetPreview(true);
 #else
@@ -38,11 +43,12 @@ public:
 #endif // NO_PARM_FILEPATH
 #undef  PARAM_INFO
 
-	RTTR_ENABLE(Node)
+	RTTR_ENABLE(PARM_NODE_BASE)
 };
 
-#undef PARM_NODE_NAME
 #undef PARM_NODE_CLASS
+#undef PARM_NODE_NAME
+#undef PARM_NODE_BASE
 
 #undef NO_PARM_FILEPATH
 #undef ENABLE_PREVIEW

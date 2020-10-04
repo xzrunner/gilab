@@ -14,6 +14,7 @@ std::vector<std::pair<int, gigraph::ParamType>> PAIR_TYPES =
 	{ gilab::PIN_MESHES,   gigraph::ParamType::Meshes },
 	{ gilab::PIN_MATERIAL, gigraph::ParamType::Material },
 	{ gilab::PIN_TEXTURE,  gigraph::ParamType::Texture },
+	{ gilab::PIN_SHADER,   gigraph::ParamType::Shader },
 };
 
 }

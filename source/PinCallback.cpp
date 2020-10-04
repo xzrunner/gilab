@@ -15,6 +15,7 @@ const pt0::Color COL_DEFAULT   = pt0::Color(255, 255, 255);
 const pt0::Color COL_MESHES    = pt0::Color(132, 228, 231);
 const pt0::Color COL_MATERIAL  = pt0::Color(132, 228, 131);
 const pt0::Color COL_TEXTURE   = pt0::Color(132, 128, 231);
+const pt0::Color COL_SHADER    = pt0::Color(232, 128, 231);
 
 std::string get_desc_func(const std::string& name, int type)
 {
@@ -30,6 +31,9 @@ std::string get_desc_func(const std::string& name, int type)
     case gilab::PIN_TEXTURE:
         ret += "(T)";
         break;
+    case gilab::PIN_SHADER:
+        ret += "(S)";
+        break;
     }
     return ret;
 }
@@ -44,6 +48,8 @@ const pt0::Color& get_color_func(int type)
         return COL_MATERIAL;
     case gilab::PIN_TEXTURE:
         return COL_TEXTURE;
+    case gilab::PIN_SHADER:
+        return COL_SHADER;
     default:
         return COL_DEFAULT;
     }
