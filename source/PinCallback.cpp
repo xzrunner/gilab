@@ -12,8 +12,11 @@ namespace
 
 const pt0::Color COL_DEFAULT   = pt0::Color(255, 255, 255);
 
+const pt0::Color COL_STRING    = pt0::Color(232, 128, 231);
+
 const pt0::Color COL_MESHES    = pt0::Color(132, 228, 231);
 const pt0::Color COL_MATERIAL  = pt0::Color(132, 228, 131);
+
 const pt0::Color COL_TEXTURE   = pt0::Color(132, 128, 231);
 const pt0::Color COL_SHADER    = pt0::Color(232, 128, 231);
 
@@ -22,12 +25,17 @@ std::string get_desc_func(const std::string& name, int type)
     std::string ret = name;
     switch (type)
     {
+    case gilab::PIN_STRING:
+        ret += "(s)";
+        break;
+
     case gilab::PIN_MESHES:
         ret += "(M)";
         break;
     case gilab::PIN_MATERIAL:
         ret += "(Mat)";
         break;
+
     case gilab::PIN_TEXTURE:
         ret += "(T)";
         break;
@@ -42,14 +50,19 @@ const pt0::Color& get_color_func(int type)
 {
     switch (type)
     {
+    case gilab::PIN_STRING:
+        return COL_STRING;
+
     case gilab::PIN_MESHES:
         return COL_MESHES;
     case gilab::PIN_MATERIAL:
         return COL_MATERIAL;
+
     case gilab::PIN_TEXTURE:
         return COL_TEXTURE;
     case gilab::PIN_SHADER:
         return COL_SHADER;
+
     default:
         return COL_DEFAULT;
     }

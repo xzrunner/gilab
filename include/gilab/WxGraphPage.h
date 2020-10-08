@@ -1,5 +1,7 @@
 #pragma once
 
+#include "gilab/Evaluator.h"
+
 #include <blueprint/WxGraphPage.h>
 
 #include <gigraph/ParamType.h>
@@ -13,7 +15,7 @@ public:
     WxGraphPage(const ur::Device& dev, wxWindow* parent, const ee0::GameObj& root,
         const ee0::SubjectMgrPtr& preview_sub_mgr);
 
-    //auto& GetFrontEval() const { return m_front_eval; }
+    auto& GetFrontEval() const { return m_front_eval; }
 
     void SetFilepath(const std::string& filepath) {
         m_filepath = filepath;
@@ -25,7 +27,7 @@ protected:
     virtual void OnEvalChangeed() override;
 
 private:
-    //Evaluator m_front_eval;
+    Evaluator m_front_eval;
 
     std::string m_filepath;
 

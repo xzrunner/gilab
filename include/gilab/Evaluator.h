@@ -9,6 +9,8 @@
 
 #include <vector>
 
+namespace gigraph { class Component; }
+
 namespace gilab
 {
 
@@ -22,6 +24,11 @@ public:
     void Rebuild(const std::vector<bp::NodePtr>& nodes,
         const bp::BackendGraph<gigraph::ParamType>& eval,
         const std::shared_ptr<dag::Context>& ctx);
+
+    void Draw(const std::shared_ptr<dag::Context>& ctx) const;
+
+private:
+    std::shared_ptr<gigraph::Component> m_draw_node = nullptr;
 
 }; // Evaluator
 

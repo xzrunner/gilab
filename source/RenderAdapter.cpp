@@ -11,8 +11,12 @@ namespace
 std::vector<std::pair<int, gigraph::ParamType>> PAIR_TYPES = 
 {
 	{ bp::PIN_ANY_VAR,     gigraph::ParamType::Any },
+
+	{ gilab::PIN_STRING,   gigraph::ParamType::String },
+
 	{ gilab::PIN_MESHES,   gigraph::ParamType::Meshes },
 	{ gilab::PIN_MATERIAL, gigraph::ParamType::Material },
+
 	{ gilab::PIN_TEXTURE,  gigraph::ParamType::Texture },
 	{ gilab::PIN_SHADER,   gigraph::ParamType::Shader },
 };

@@ -7,6 +7,7 @@
 
 #include <renderpipeline/RenderMgr.h>
 #include <painting3/PerspCam.h>
+#include <gigraph/RenderContext.h>
 
 namespace gilab
 {
@@ -51,6 +52,30 @@ void WxPreviewCanvas::DrawBackground3D() const
 
 void WxPreviewCanvas::DrawForeground3D() const
 {
+    if (!m_graph_page) {
+        return;
+    }
+
+    auto& ctx = *GetRenderContext().ur_ctx;
+    rp::RenderMgr::Instance()->SetRenderer(m_dev, ctx, rp::RenderType::EXTERN);
+
+    auto rc = std::make_shared<gigraph::RenderContext>();
+    //rc->cam_proj_mat = m_camera->GetProjectionMat();
+    //rc->cam_view_mat = m_camera->GetViewMat();
+    //if (m_camera->TypeID() == pt0::GetCamTypeID<pt3::PerspCam>()) {
+    //    auto persp = std::static_pointer_cast<pt3::PerspCam>(m_camera);
+    //    rc->cam_position = persp->GetPos();
+    //}
+    //rc->light_position.Set(0, 2, -4);
+
+    //rc->screen_size.x = GetScreenSize().x;
+    //rc->screen_size.y = GetScreenSize().y;
+
+    rc->ur_dev = &m_dev;
+    rc->ur_ctx = GetRenderContext().ur_ctx.get();
+
+    auto& eval = m_graph_page->GetFrontEval();
+    eval.Draw(rc);
 }
 
 void WxPreviewCanvas::DrawForeground2D() const

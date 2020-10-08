@@ -5,8 +5,11 @@ namespace gilab
 
 enum PinType
 {
-	PIN_MESHES = 1000,
+	PIN_STRING = 1000,
+
+	PIN_MESHES,
 	PIN_MATERIAL,
+
 	PIN_TEXTURE,
 	PIN_SHADER,
 };

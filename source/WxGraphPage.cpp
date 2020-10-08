@@ -54,8 +54,7 @@ void WxGraphPage::OnEvalChangeed()
         }
     }
 
-    Evaluator eval;
-    eval.Rebuild(nodes, *GetSceneTree()->GetRootGraph(), m_ctx);
+    m_front_eval.Rebuild(nodes, *GetSceneTree()->GetRootGraph(), m_ctx);
 }
 
 }

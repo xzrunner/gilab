@@ -34,6 +34,10 @@
 #define PARM_NODE_NAME draw
 #include EXE_FILEPATH
 
+#define PARM_NODE_CLASS Shader
+#define PARM_NODE_NAME shader
+#include EXE_FILEPATH
+
 #undef NODES_GROUP_NAME
 
 // tool
@@ -44,8 +48,8 @@
 #define PARM_NODE_NAME scene
 #include EXE_FILEPATH
 
-#define PARM_NODE_CLASS Shader
-#define PARM_NODE_NAME shader
+#define PARM_NODE_CLASS String
+#define PARM_NODE_NAME string
 #define PARM_CODE_EDIT
 #include EXE_FILEPATH
 
@@ -58,13 +62,31 @@
 #define NO_PARM_FILEPATH
 #define PARM_NODE_CLASS BRDF
 #define PARM_NODE_NAME brdf
-#define PARM_NODE_BASE Shader
+#define PARM_NODE_BASE String
 #include EXE_FILEPATH
 
 #define NO_PARM_FILEPATH
 #define PARM_NODE_CLASS Glass
 #define PARM_NODE_NAME glass
-#define PARM_NODE_BASE Shader
+#define PARM_NODE_BASE String
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_CLASS PathTrace
+#define PARM_NODE_NAME pathtrace
+#define PARM_NODE_BASE String
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_CLASS Vertex
+#define PARM_NODE_NAME vertex
+#define PARM_NODE_BASE String
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_CLASS Progressive
+#define PARM_NODE_NAME progressive
+#define PARM_NODE_BASE String
 #include EXE_FILEPATH
 
 #undef NODES_GROUP_NAME
