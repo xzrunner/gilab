@@ -77,6 +77,8 @@ void NodePreview::Draw(const ur::Device& dev, ur::Context& ctx, const bp::Node& 
 bool NodePreview::DrawToRT(const ur::Device& dev, ur::Context& ctx, const bp::Node& node, 
                            const bp::BackendGraph<gigraph::ParamType>& eval)
 {
+    bool ret = false;
+
     auto renderer = rp::RenderMgr::Instance()->GetRenderer(rp::RenderType::SPRITE);
     auto shader = renderer->GetAllShaders()[0];
 
@@ -133,13 +135,20 @@ bool NodePreview::DrawToRT(const ur::Device& dev, ur::Context& ctx, const bp::No
 
                         sm::Matrix2D mat;
                         mat.Scale(static_cast<float>(TEX_SIZE), static_cast<float>(TEX_SIZE));
+
                         auto rs = ur::DefaultRenderState2D();
+
+                        rs.blending.enabled = false;
+
                         auto& color_mask = preview_node.GetColorMask();
                         rs.color_mask.r = color_mask.x;
                         rs.color_mask.g = color_mask.y;
                         rs.color_mask.b = color_mask.z;
                         rs.color_mask.a = color_mask.w;
+
                         pt2::RenderSystem::DrawTexture(dev, ctx, rs, tex->GetWidth(), tex->GetHeight(), tex, sm::rect(1, 1), mat);
+
+                        ret = true;
                     }
                 }
             }
@@ -160,7 +169,7 @@ bool NodePreview::DrawToRT(const ur::Device& dev, ur::Context& ctx, const bp::No
         proj_snap->Restore();
     }
 
-    return true;
+    return ret;
 }
 
 void NodePreview::DrawFromRT(const ur::Device& dev, ur::Context& ctx, const bp::Node& node, 
@@ -185,6 +194,8 @@ void NodePreview::DrawFromRT(const ur::Device& dev, ur::Context& ctx, const bp::
     };
 
     auto rs = ur::DefaultRenderState2D();
+    rs.blending.enabled = false;
+
     pt2::RenderSystem::DrawTexQuad(dev, ctx, rs, vertices, texcoords, tex, 0xffffffff);
 }
 
