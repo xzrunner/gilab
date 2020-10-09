@@ -124,31 +124,34 @@ bool NodePreview::DrawToRT(const ur::Device& dev, ur::Context& ctx, const bp::No
                 if (back_node) 
                 {
                     auto param = std::static_pointer_cast<gigraph::Component>(back_node)->GetValue(f_pin->GetPosIdx());
-                    assert(param && param->Type() == gigraph::ParamType::Texture);
-                    auto tex = std::static_pointer_cast<gigraph::TextureParam>(param)->GetTexture();
-                    if (tex)
+                    if (param)
                     {
-                        auto& preview_node = static_cast<const node::Preview&>(node);
+                        assert(param->Type() == gigraph::ParamType::Texture);
+                        auto tex = std::static_pointer_cast<gigraph::TextureParam>(param)->GetTexture();
+                        if (tex)
+                        {
+                            auto& preview_node = static_cast<const node::Preview&>(node);
 
-                        auto sampler = dev.GetTextureSampler(preview_node.GetSamplerType());
-                        sampler->Bind(0);
+                            auto sampler = dev.GetTextureSampler(preview_node.GetSamplerType());
+                            sampler->Bind(0);
 
-                        sm::Matrix2D mat;
-                        mat.Scale(static_cast<float>(TEX_SIZE), static_cast<float>(TEX_SIZE));
+                            sm::Matrix2D mat;
+                            mat.Scale(static_cast<float>(TEX_SIZE), static_cast<float>(TEX_SIZE));
 
-                        auto rs = ur::DefaultRenderState2D();
+                            auto rs = ur::DefaultRenderState2D();
 
-                        rs.blending.enabled = false;
+                            rs.blending.enabled = false;
 
-                        auto& color_mask = preview_node.GetColorMask();
-                        rs.color_mask.r = color_mask.x;
-                        rs.color_mask.g = color_mask.y;
-                        rs.color_mask.b = color_mask.z;
-                        rs.color_mask.a = color_mask.w;
+                            auto& color_mask = preview_node.GetColorMask();
+                            rs.color_mask.r = color_mask.x;
+                            rs.color_mask.g = color_mask.y;
+                            rs.color_mask.b = color_mask.z;
+                            rs.color_mask.a = color_mask.w;
 
-                        pt2::RenderSystem::DrawTexture(dev, ctx, rs, tex->GetWidth(), tex->GetHeight(), tex, sm::rect(1, 1), mat);
+                            pt2::RenderSystem::DrawTexture(dev, ctx, rs, tex->GetWidth(), tex->GetHeight(), tex, sm::rect(1, 1), mat);
 
-                        ret = true;
+                            ret = true;
+                        }
                     }
                 }
             }
