@@ -23,7 +23,7 @@ rttr::registration::class_<gilab::node::PARM_NODE_CLASS>(XSTR(RTTR_NAME))
 .property(#name, &gilab::node::##PARM_NODE_CLASS::member)       \
 (                                                               \
 	rttr::metadata(ee0::UIMetaInfoTag(), ee0::UIMetaInfo(#id)), \
-	rttr::metadata(ee0::PropLongStringTag(), true)              \
+	rttr::metadata(ee0::PropEditCodeTag(), true)                \
 )
 #else
 #define PARAM_INFO(id, type, name, member, default_val)        \
