@@ -12,6 +12,8 @@ enum PinType
 
 	PIN_TEXTURE,
 	PIN_SHADER,
+
+	PIN_SCENE,
 };
 
 }

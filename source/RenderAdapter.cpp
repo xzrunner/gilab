@@ -19,6 +19,8 @@ std::vector<std::pair<int, gigraph::ParamType>> PAIR_TYPES =
 
 	{ gilab::PIN_TEXTURE,  gigraph::ParamType::Texture },
 	{ gilab::PIN_SHADER,   gigraph::ParamType::Shader },
+
+	{ gilab::PIN_SCENE,    gigraph::ParamType::Scene },
 };
 
 }
